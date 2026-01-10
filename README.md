@@ -1,114 +1,109 @@
 
 # 🎬 Movie Recommender System
 
-An intelligent movie recommendation engine that suggests films based on content similarity, utilizing metadata such as cast, crew, genres, and keywords.
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue) ![Streamlit](https://img.shields.io/badge/Streamlit-App-red) ![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Content%20Based-green)
 
-> **🔗 Live Demo:** [recom94.streamlit.app](https://recom94.streamlit.app)
+A machine learning-based recommendation engine that suggests movies similar to a user's selection. This project utilizes **Content-Based Filtering** to analyze movie tags (genres, overview, cast, director) and compute similarity scores.
 
 ---
 
-## 📌 Features
+## 🚀 Features
 
-- **🎯 Content-Based Filtering**: Recommends movies similar to a selected title by analyzing metadata.
-- **🖥️ Interactive Web Interface**: Built with Streamlit for seamless interaction.
-- **⚡ Precomputed Similarities**: Fast recommendations using cosine similarity scores.
-- **🖼️ TMDB Integration**: Fetches movie posters and details using The Movie Database (TMDB) API.
-- **🚀 Easy Deployment**: Ready to deploy on Streamlit Cloud or other hosting platforms.
+* **Smart Recommendations:** Suggests 5 movies based on content similarity.
+* **Content-Based Filtering:** Uses metadata (keywords, genres, cast, crew) rather than user ratings.
+* **Interactive UI:** Built with **Streamlit** for a smooth user experience.
+* **Real-time Data:** Fetches movie posters and details dynamically using the **TMDB API**.
+
+---
+
+## 🛠 Tech Stack
+
+| Category | Technologies |
+| :--- | :--- |
+| **Language** | Python |
+| **Libraries** | Pandas, NumPy, Scikit-Learn, NLTK |
+| **Frontend** | Streamlit |
+| **API** | TMDB (The Movie Database) API |
+
+---
+
+## 📂 Project Structure
+
+```bash
+.
+├── app.py                # Main Streamlit application
+├── movie_recommender.ipynb # Jupyter Notebook for data processing & model building
+├── tmdb_5000_movies.csv  # Dataset (Movies)
+├── tmdb_5000_credits.csv # Dataset (Credits)
+├── movies.pkl            # Pickled dataframe (generated)
+├── similarity.pkl        # Pickled similarity matrix (generated)
+├── requirements.txt      # Python dependencies
+└── README.md             # Documentation
+
+```
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone [https://github.com/cryptic0053/Movie-Recommender-System.git](https://github.com/cryptic0053/Movie-Recommender-System.git)
+cd Movie-Recommender-System
+
+```
+
+### 2. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+
+```
+
+### 3. Generate Models (First Run Only)
+
+If `movies.pkl` and `similarity.pkl` are not present, run the notebook or python script to generate them:
+
+```bash
+# Open the notebook and run all cells
+jupyter notebook movie_recommender.ipynb
+
+```
+
+### 4. Run the App
+
+```bash
+streamlit run app.py
+
+```
 
 ---
 
 ## 🧠 How It Works
 
-The system processes the TMDB 5000 Movies and Credits datasets to extract relevant features like genres, cast, crew, and keywords.
-
-1. These features are combined into a textual format.
-2. `CountVectorizer` transforms the text into vectors.
-3. `cosine_similarity` finds similar movies.
-4. When a user selects a movie, the top 5 most similar movies are recommended.
+1. **Data Preprocessing:** Merges credits and movies datasets; extracts relevant tags (genres, keywords, top 3 actors, director).
+2. **Vectorization:** Converts text tags into vectors using `CountVectorizer` (Bag of Words).
+3. **Similarity Calculation:** Computes the **Cosine Similarity** between all movie vectors.
+4. **Recommendation:** When a user selects a movie, the system finds the 5 closest vectors (movies) with the highest similarity scores.
 
 ---
 
-## ⚙️ Prerequisites
+## 🤝 Contributing
 
-- Python 3.7 or higher
-- `pip` package manager
+Contributions are welcome!
 
----
-
-## 📥 Installation
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/cryptic0053/Movie-Recommender-System.git
-cd Movie-Recommender-System
-```
-
-### 2. Create a Virtual Environment
-
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-### 3. Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Run the Application
-
-```bash
-streamlit run app.py
-```
-
-Access the app at: [http://localhost:8501](http://localhost:8501)
+1. Fork the repo.
+2. Create a feature branch.
+3. Commit your changes.
+4. Push to the branch and open a Pull Request.
 
 ---
 
-## 🧪 Usage
+## 👤 Author
 
-1. Launch the app using the steps above.
-2. Select a movie from the dropdown menu.
-3. Click the **"Recommend"** button.
-4. View the top 5 recommended movies with posters.
+* GitHub: [@cryptic0053](https://github.com/cryptic0053)
 
 ---
 
-## 📊 Datasets Used
-
-- **TMDB 5000 Movies Dataset**: Contains details about 5000 movies.
-- **TMDB 5000 Credits Dataset**: Contains cast and crew information.
-
-> 📌 These datasets are publicly available on [Kaggle](https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata).
-
----
-
-## 🛠️ Technologies Used
-
-- **Python**: Core language
-- **Pandas, NumPy**: Data processing
-- **Scikit-learn**: ML utilities for vectorization & similarity
-- **Streamlit**: Frontend web app
-- **TMDB API**: Poster and movie detail fetching
-
----
-
-## 🚀 Deployment
-
-This app is already deployed at 👉 [recom94.streamlit.app](https://recom94.streamlit.app)
-
-To deploy your own:
-
-- Make sure `requirements.txt` includes all dependencies.
-- Push your code to GitHub.
-- Deploy to [Streamlit Cloud](https://streamlit.io/cloud) or alternatives like Heroku or AWS.
-
----
-
-## 📬 Contact
-
-For questions or collaboration:
-
-- GitHub: [@cryptic0053](https://github.com/cryptic0053)
+*This project is for educational purposes and uses the TMDB dataset.*
